@@ -1,0 +1,58 @@
+body {
+    background-image: url(../slike/gas-maska.png);
+    background-size: cover;
+    background-position: center;
+    background-position-y: 30px;
+}
+
+#logout {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: 3px solid black;
+    font-size: large;
+}
+
+.super-container {
+    width: 80%;
+    margin: auto;
+}
+
+.container {
+    margin: auto;
+    margin-bottom: 100px;
+    width: 30vw;
+    padding: 30px;
+    background-color: yellowgreen;
+    border: 3px solid black;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.container p {
+    font-size: large;
+}
+
+#container-submit {
+    width: 35vw;
+    padding: 0;
+}
+
+#submit {
+    background-color: yellowgreen;
+    width: 100%;
+    font-size: xx-large;
+    border: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 80%;
+    }
+
+    #container-submit {
+        width: 100%;
+    }
+}
