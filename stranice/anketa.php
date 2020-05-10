@@ -7,6 +7,8 @@ if (!isset($_SESSION['logged'])) {
     die();
 }
 
+$user = $_SESSION['logged'];
+
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +29,7 @@ if (!isset($_SESSION['logged'])) {
         <h3>Zagadjenost vazduha</h3>
         <img id="slika" src="../slike/decak-maska.png" alt="decak s maskom">
         <button id="logout" onclick="goto('/projekat/akcije/logout.php')">Odjavi se</button>
+        <h4 class="user"><?php echo $user; ?></h4>
     </div>
 
     <div class="super-container">
@@ -67,7 +70,7 @@ if (!isset($_SESSION['logged'])) {
                 </select>
             </div>
             <div class="container">
-                <p>Mislite li ste imali kasalj u poslednje vreme?</p><br/>
+                <p>Jeste li imali kasalj u poslednje vreme?</p><br/>
                 <input type="radio" name="p5" value="da,1"> Da<br>
                 <input type="radio" name="p5" value="ne,0"> Ne<br>
             </div>
@@ -92,6 +95,17 @@ if (!isset($_SESSION['logged'])) {
                 <input type="checkbox" name="p8[]" value="nacin_grejanja,1"> Promena nacina grejanja<br>
                 <input type="checkbox" name="p8[]" value="ici_pesice,2"> Ici pesice umesto automobilima<br>
                 <input type="checkbox" name="p8[]" value="ne_izlaziti_iz_kuce,-1"> Ne izlaziti iz kuce<br>
+            </div>
+            <div class="container">
+                <p>Koji gradovi su po vama najzagadjeniji?</p><br/>
+                <input type="checkbox" name="p9[]" value="beograd,1"> Beograd<br>
+                <input type="checkbox" name="p9[]" value="novi_pazar,-1"> Novi Pazar<br>
+                <input type="checkbox" name="p9[]" value="bor,1"> Bor<br>
+                <input type="checkbox" name="p9[]" value="sarajevo,2"> Sarajevo<br>
+            </div>
+            <div class="container">
+                <p>Komentar:</p><br/>
+                <textarea name="komentar" cols="10" rows="4" placeholder="Napisite svoje misljenje."></textarea>
             </div>
             <div class="container" id="container-submit">
                 <input type="submit" value="submit" id="submit">

@@ -18,14 +18,19 @@ body {
 .head {
     width: 100%;
     padding: 40px 0;
-    background-color: hotpink;
+    background-color: green;
+    color: white;
     text-align: center;
     margin-bottom: 50px;
-    font-family: 'Bangers', cursive;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .head-title {
     margin: auto;
     display: inline;
     font-family: 'Bangers', cursive;
+}
+
+.user {
+    font-family: 'Noto Sans', sans-serif;
 }

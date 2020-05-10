@@ -3,7 +3,7 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    header('Location: ../index.html');
+    header('Location: ../stranice/registration.php');
     die();
 }
 
@@ -27,7 +27,21 @@ if (check_login($email, $password)) {
 }
 
 function check_login($mail, $pass) {
-    if ($mail == 'hamza' && $pass == 'hamza')
-        return true;
-    return false;
+    $query = "SELECT `password` FROM `korisnik` WHERE `email`='$mail';";
+    $conn = new mysqli('localhost', 'root', '', 'anketa');
+    if ($conn->connect_error) {
+        echo 'connection error';
+        return false;
+    }
+
+    $result = $conn->query($query);
+    if ($result->num_rows == 0) {
+        return false;
+    }
+
+    $db_password = $result->fetch_assoc()['password'];
+    $ok = password_verify($pass, $db_password);
+
+    $conn->close();
+    return $ok;
 }

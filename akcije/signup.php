@@ -3,7 +3,7 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    header('Location: ../index.html');
+    header('Location: ../stranice/registration.php');
     die();
 }
 
@@ -12,7 +12,7 @@ $password = $_POST['password'];
 $password_again = $_POST['password-again'];
 
 if (!(isset($email) && isset($password) && isset($password_again)) || empty($email) || empty($password) || empty($password_again)) {
-    echo '<h1>Polja ne smeju biti prazni!</h1><br/>';
+    echo '<h1>Polja ne smeju biti prazna!</h1><br/>';
     echo '<a href="../stranice/registration.php">Pokusajte ponovo</a>';
     die();
 }
@@ -34,6 +34,16 @@ if ($ok) {
     die();
 }
 
-function make_user($main, $pass) {
-    return true;
+function make_user($mail, $pass) {
+    $password_hash = password_hash($pass, PASSWORD_DEFAULT);
+    $query = "INSERT INTO `korisnik` (`email`, `password`) VALUES ('$mail', '$password_hash');";
+    $conn = new mysqli('localhost', 'root', '', 'anketa');
+    if ($conn->connect_error) {
+        echo 'connection error';
+        return false;
+    }
+
+    $ok = $conn->query($query);
+    $conn->close();
+    return $ok;
 }
