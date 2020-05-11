@@ -27,8 +27,28 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers|Noto+Sans&display=swap">
     <link rel="stylesheet" href="../stilovi/style.css">
     <link rel="stylesheet" href="../stilovi/admin-style.css">
+    <script>
+        let p0Data = [10, 10];
+        let p1Data = [20, 10];
+        let p2Data = [20, 10];
+        let p3Data = [5, 3, 1, 4, 2];
+        let p4Data = [1, 2, 3, 4, 5];
+        let p5Data = [15, 3];
+        let p6Data = [3, 5, 6, 2, 0];
+        let p7Data = [20, 10, 5, 1];
+        let p8Data = [1, 2, 3, 4];
+        let p9Data = [4, 3, 2, 1];
+        let komentari = ['neki komentar', 'neki drugi komentar', 'treci neki komentar'];
+    </script>
     <script defer src="../url-script.js"></script>
+    <script defer src="../Chart.bundle.min.js"></script>
     <script defer src="admin-charts.js"></script>
+    <style>
+        #komentari {
+            list-style-type: disclosure-closed;
+            margin-left: 20px;
+        }
+    </style>
     <title>Admin</title>
 </head>
 <body>
@@ -60,34 +80,54 @@ $result = $conn->query($sql);
     </div>
     <div class="container">
         <p>Mislite li da je vazduh u nasem gradu zagadjen? (Pitanje 2)</p>
+        <canvas id="p1"></canvas>
     </div>
     <div class="container">
         <p>Mislite li da vam je zdravlje ugrozeno zbog zagadjenog vazduha? (Pitanje 3)</p>
+        <canvas id="p2"></canvas>
     </div>
     <div class="container">
         <p>Koliko smatrate da je vazduh zagadjen? (Pitanje 4)</p>
+        <canvas id="p3"></canvas>
     </div>
     <div class="container">
         <p>Koliko smatrate da je problem zagadjenog vazduga resiv? (Pitanje 5)</p>
+        <canvas id="p4"></canvas>
     </div>
     <div class="container">
         <p>Jeste li imali kasalj u poslednje vreme? (Pitanje 6)</p>
+        <canvas id="p5"></canvas>
     </div>
     <div class="container">
         <p>Mislite li da nasi gradjani treba da nose maske protiv zagadjenog vazduha? (Pitanje 7)</p>
+        <canvas id="p6"></canvas>
     </div>
     <div class="container">
         <p>Sta smatrate glavnim razlozima za zagadjenost vazduha? (Pitanje 8)</p>
+        <canvas id="p7"></canvas>
     </div>
     <div class="container">
         <p>Sta od navedenog smatrate da bi pomoglo kod problema zagadjenog vazduga? (Pitanje 9)</p>
+        <canvas id="p8"></canvas>
     </div>
     <div class="container">
         <p>Koji gradovi su po vama najzagadjeniji? (Pitanje 10)</p>
+        <canvas id="p9"></canvas>
     </div>
     <div class="container">
         <p>Komentari</p>
+        <hr>
+        <ul id="komentari">
+        </ul>
     </div>
     <div style="height: 200px;"></div>
+    <script>
+        const komentariContainer = document.getElementById("komentari");
+        komentari.forEach(k => {
+            const li = document.createElement('li');
+            li.innerHTML = k;
+            komentariContainer.appendChild(li);
+        });
+    </script>
 </body>
 </html>
