@@ -2,6 +2,17 @@
 
 session_start();
 
+if (!$_SESSION["dbhost"]) {
+    $_SESSION["redirect"] = './akcije/anketa-submit.php';
+    header('Location: ../config.php');
+    die();
+}
+
+$dbhost = $_SESSION["dbhost"];
+$dbuser = $_SESSION["dbuser"];
+$dbpass = $_SESSION["dbpass"];
+$dbname = $_SESSION["dbname"];
+
 $answers = array();
 $score = 0;
 
@@ -45,7 +56,7 @@ $query =
 SET `valid`=$valid, `p0`='$answers[0]', `p1`='$answers[1]', `p2`='$answers[2]', `p3`='$answers[3]', `p4`='$answers[4]', `p5`='$answers[5]', `p6`='$answers[6]', `p7`='$answers[7]',  `p8`='$answers[8]', `p9`='$answers[9]', `komentar`='$komentar' 
 WHERE `email`='$_SESSION[logged]';";
 
-$conn = new mysqli('localhost', 'root', '', 'anketa');
+$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 if ($conn->connect_error) {
     echo 'connection error';
     return false;

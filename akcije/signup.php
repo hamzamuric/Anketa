@@ -2,6 +2,17 @@
 
 session_start();
 
+if (!$_SESSION["dbhost"]) {
+    $_SESSION["redirect"] = './akcije/signup.php';
+    header('Location: ../config.php');
+    die();
+}
+
+$dbhost = $_SESSION["dbhost"];
+$dbuser = $_SESSION["dbuser"];
+$dbpass = $_SESSION["dbpass"];
+$dbname = $_SESSION["dbname"];
+
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     header('Location: ../stranice/registration.php');
     die();
@@ -37,7 +48,7 @@ if ($ok) {
 function make_user($mail, $pass) {
     $password_hash = password_hash($pass, PASSWORD_DEFAULT);
     $query = "INSERT INTO `korisnik` (`email`, `password`) VALUES ('$mail', '$password_hash');";
-    $conn = new mysqli('localhost', 'root', '', 'anketa');
+    $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
     if ($conn->connect_error) {
         echo 'connection error';
         return false;

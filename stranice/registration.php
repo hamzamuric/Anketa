@@ -32,7 +32,7 @@ if (isset($_SESSION['logged'])) {
     <div class="super-container">
         
         <div class="container">
-            <form action="/projekat/akcije/login.php" method="post">
+            <form action="../akcije/login.php" method="post">
                 <table>
                     <tr>
                         <td>E-mail:</td>
@@ -50,7 +50,7 @@ if (isset($_SESSION['logged'])) {
         </div>
 
         <div class="container">
-            <form action="/projekat/akcije/signup.php" method="post">
+            <form action="../akcije/signup.php" method="post">
                 <table>
                     <tr>
                         <td>E-mail:</td>

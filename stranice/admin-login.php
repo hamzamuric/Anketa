@@ -1,5 +1,12 @@
 <?php
 
+session_start();
+
+if (isset($_SESSION['admin'])) {
+    header('Location: admin.php');
+    die();
+}
+
 if (isset($_POST['email']) && isset($_POST['password']) && $_POST['email'] == 'admin' && $_POST['password'] == 'admin') {
     session_start();
     $_SESSION['admin'] = TRUE;
@@ -28,21 +35,21 @@ if (isset($_POST['email']) && isset($_POST['password']) && $_POST['email'] == 'a
     </div>
 
     <div class="container">
-            <form action="/projekat/stranice/admin-login.php" method="post">
-                <table>
-                    <tr>
-                        <td>E-mail:</td>
-                        <td><input type="text" name="email" id="email"></td>
-                    </tr>
-                    <tr>
-                        <td>Lozinka</td>
-                        <td><input type="password" name="password" id="password"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input class="submit-btn" type="submit" value="Uloguj se"></td>
-                    </tr>
-                </table>
-            </form>
-        </div>
+        <form action="../stranice/admin-login.php" method="post">
+            <table>
+                <tr>
+                    <td>E-mail:</td>
+                    <td><input type="text" name="email" id="email"></td>
+                </tr>
+                <tr>
+                    <td>Lozinka</td>
+                    <td><input type="password" name="password" id="password"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input class="submit-btn" type="submit" value="Uloguj se"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </body>
 </html>

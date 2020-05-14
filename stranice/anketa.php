@@ -28,7 +28,7 @@ $user = $_SESSION['logged'];
         <h1 class="head-title">Anketa</h1>
         <h3>Zagadjenost vazduha</h3>
         <img id="slika" src="../slike/decak-maska.png" alt="decak s maskom">
-        <button id="logout" onclick="goto('/projekat/akcije/logout.php')">Odjavi se</button>
+        <button id="logout" onclick="goto('../akcije/logout.php')">Odjavi se</button>
         <h4 class="user"><?php echo $user; ?></h4>
     </div>
 

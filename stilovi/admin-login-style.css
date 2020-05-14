@@ -1,7 +1,11 @@
 .container {
-    width: 300px;
+    width: 280px;
     margin: auto;
+    margin-bottom: 80px;
+    padding: 10px;
     background-color: greenyellow;
+    border-radius: 10px;
+    box-shadow: 6px 8px 6px 0px;
 }
 
 .container table {
