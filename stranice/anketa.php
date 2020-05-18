@@ -40,17 +40,17 @@ $user = $_SESSION['logged'];
                 <input type="radio" name="p0" value="ne,-1"> Ne<br>
             </div>
             <div class="container">
-                <p>Mislite li da je vazduh u nasem gradu zagadjen?</p><br/>
+                <p>Mislite li da je vazduh u našem gradu zagađen?</p><br/>
                 <input type="radio" name="p1" value="da,1"> Da<br>
                 <input type="radio" name="p1" value="ne,-1"> Ne<br>
             </div>
             <div class="container">
-                <p>Mislite li da vam je zdravlje ugrozeno zbog zagadjenog vazduha?</p><br/>
+                <p>Mislite li da vam je zdravlje ugroženo zbog zagađenog vazduha?</p><br/>
                 <input type="radio" name="p2" value="da,1"> Da<br>
                 <input type="radio" name="p2" value="ne,-1"> Ne<br>
             </div>
             <div class="container">
-                <p>Koliko smatrate da je vazduh zagadjen?</p><br/>
+                <p>Koliko smatrate da je vazduh zagađen?</p><br/>
                 <select name="p3">
                     <option value="1,-2">1</option>
                     <option value="2,-1">2</option>
@@ -60,7 +60,7 @@ $user = $_SESSION['logged'];
                 </select>
             </div>
             <div class="container">
-                <p>Koliko smatrate da je problem zagadjenog vazduga resiv?</p><br/>
+                <p>Koliko smatrate da je problem zagađenog vazduga rešiv?</p><br/>
                 <select name="p4">
                     <option value="1,-2">1</option>
                     <option value="2,-1">2</option>
@@ -70,12 +70,12 @@ $user = $_SESSION['logged'];
                 </select>
             </div>
             <div class="container">
-                <p>Jeste li imali kasalj u poslednje vreme?</p><br/>
+                <p>Jeste li imali kašalj u poslednje vreme?</p><br/>
                 <input type="radio" name="p5" value="da,1"> Da<br>
                 <input type="radio" name="p5" value="ne,0"> Ne<br>
             </div>
             <div class="container">
-                <p>Mislite li da nasi gradjani treba da nose maske protiv zagadjenog vazduha?</p><br/>
+                <p>Mislite li da naši građani treba da nose maske protiv zagađenog vazduha?</p><br/>
                 <input type="radio" name="p6" value="nikako,-3"> Nikako<br>
                 <input type="radio" name="p6" value="ne_bas,-2"> Ne bas<br>
                 <input type="radio" name="p6" value="mozda,-1"> Mozda<br>
@@ -83,21 +83,21 @@ $user = $_SESSION['logged'];
                 <input type="radio" name="p6" value="obavezno,3"> Obavezno<br>
             </div>
             <div class="container">
-                <p>Sta smatrate glavnim razlozima za zagadjenost vazduha?</p><br/>
+                <p>Šta smatrate glavnim razlozima za zagađenost vazduha?</p><br/>
                 <input type="checkbox" name="p7[]" value="fabrike,-1"> Fabrike<br>
                 <input type="checkbox" name="p7[]" value="ogrev,2"> Dim od drva za ogrev<br>
                 <input type="checkbox" name="p7[]" value="automobili,1"> Dim od automobila<br>
                 <input type="checkbox" name="p7[]" value="tekstil,-1"> Tekstilna industrija<br>
             </div>
             <div class="container">
-                <p>Sta od navedenog smatrate da bi pomoglo kod problema zagadjenog vazduga?</p><br/>
-                <input type="checkbox" name="p8[]" value="svest_gradjana,0"> Povecati svest gradjana o zivotnoj okolini<br>
-                <input type="checkbox" name="p8[]" value="nacin_grejanja,1"> Promena nacina grejanja<br>
-                <input type="checkbox" name="p8[]" value="ici_pesice,2"> Ici pesice umesto automobilima<br>
+                <p>Šta od navedenog smatrate da bi pomoglo kod problema zagađenog vazduha?</p><br/>
+                <input type="checkbox" name="p8[]" value="svest_gradjana,0"> Povećati svest građana o životnoj okolini<br>
+                <input type="checkbox" name="p8[]" value="nacin_grejanja,1"> Promena načina grejanja<br>
+                <input type="checkbox" name="p8[]" value="ici_pesice,2"> Ići pešice umesto automobilima<br>
                 <input type="checkbox" name="p8[]" value="ne_izlaziti_iz_kuce,-1"> Ne izlaziti iz kuce<br>
             </div>
             <div class="container">
-                <p>Koji gradovi su po vama najzagadjeniji?</p><br/>
+                <p>Koji gradovi su po vama najzagađeniji?</p><br/>
                 <input type="checkbox" name="p9[]" value="beograd,1"> Beograd<br>
                 <input type="checkbox" name="p9[]" value="novi_pazar,-1"> Novi Pazar<br>
                 <input type="checkbox" name="p9[]" value="bor,1"> Bor<br>
@@ -105,7 +105,7 @@ $user = $_SESSION['logged'];
             </div>
             <div class="container">
                 <p>Komentar:</p><br/>
-                <textarea name="komentar" cols="10" rows="4" placeholder="Napisite svoje misljenje."></textarea>
+                <textarea name="komentar" cols="10" rows="4" placeholder="Napišite svoje mišljenje."></textarea>
             </div>
             <div class="container" id="container-submit">
                 <input type="submit" value="submit" id="submit">

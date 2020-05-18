@@ -7,14 +7,14 @@ if (!$_SESSION["dbhost"]) {
     header('Location: ../config.php');
     die();
 }
-
-$dbhost = $_SESSION["dbhost"];
-$dbuser = $_SESSION["dbuser"];
-$dbpass = $_SESSION["dbpass"];
-$dbname = $_SESSION["dbname"];
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "";
+$dbname = "anketa";
 
 $email = $_GET["email"];
 $valid = $_GET["valid"];
+$valid = $valid ? 1 : 0;
 
 if (!isset($_SESSION['admin'])) {
     header('Location: admin-login.php');
@@ -22,7 +22,7 @@ if (!isset($_SESSION['admin'])) {
 }
 
 $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
-$sql = "UPDATE `korisnik` SET `valid` = '$valid' WHERE `korisnik`.`email` = '$email';";
+$sql = "UPDATE `korisnik` SET `valid`=$valid WHERE `email`='$email';";
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

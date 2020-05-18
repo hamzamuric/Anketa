@@ -8,10 +8,10 @@ if (!$_SESSION["dbhost"]) {
     die();
 }
 
-$dbhost = $_SESSION["dbhost"];
-$dbuser = $_SESSION["dbuser"];
-$dbpass = $_SESSION["dbpass"];
-$dbname = $_SESSION["dbname"];
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "";
+$dbname = "anketa";
 
 $email = $_GET["email"];
 
@@ -46,8 +46,69 @@ $validTxt = $valid == 1 ? "valid" : "invalid";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details</title>
     <script src="../url-script.js"></script>
+    <style>
+        html,
+        body {
+          height: 1000px;
+        }
+        body {
+          margin: 0;
+          background: linear-gradient(45deg, #49a09d, #5f2c82);
+          font-family: sans-serif;
+          font-weight: 100;
+        }
+        .container {
+          position: absolute;
+          top: calc(50% + 100px);
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        .header {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            color: white;
+        }
+        table {
+          width: 800px;
+          border-collapse: collapse;
+          overflow: hidden;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        th,
+        td {
+          padding: 15px;
+          background-color: rgba(255, 255, 255, 0.2);
+          color: #fff;
+        }
+        th {
+          text-align: left;
+        }
+        thead th {
+          background-color: #55608f;
+        }
+        tbody tr:hover {
+          background-color: rgba(255, 255, 255, 0.3);
+        }
+        tbody td {
+          position: relative;
+        }
+        tbody td:hover:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: -9999px;
+          bottom: -9999px;
+          background-color: rgba(255, 255, 255, 0.2);
+          z-index: -1;
+        }
+
+    </style>
 </head>
 <body>
+    <div class="header">
     <h4 style="display: inline;"><?php echo "$email ($validTxt)"; ?> </h4>
     <button onclick="goto('../akcije/delete.php?email=<?php echo $email; ?>')">DELETE</button>
     <button onclick="goto('../akcije/valid.php?email=<?php echo $email; ?>&valid=<?php echo !$valid; ?>')">
@@ -58,6 +119,8 @@ $validTxt = $valid == 1 ? "valid" : "invalid";
             echo "Make valid";
         ?>
     </button>
+    </div>
+    <div class="container">
     <table border="1px">
         <tr>
             <td>Brinete li za svoje zdravlje?</td>
@@ -104,5 +167,6 @@ $validTxt = $valid == 1 ? "valid" : "invalid";
             <td><?php echo $user["komentar"] ?></td>
         <tr>
     </table>
+    </div>
 </body>
 </html>

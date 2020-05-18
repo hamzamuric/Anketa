@@ -8,10 +8,10 @@ if (!$_SESSION["dbhost"]) {
     die();
 }
 
-$dbhost = $_SESSION["dbhost"];
-$dbuser = $_SESSION["dbuser"];
-$dbpass = $_SESSION["dbpass"];
-$dbname = $_SESSION["dbname"];
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "";
+$dbname = "anketa";
 
 if (!isset($_SESSION['admin'])) {
     header('Location: admin-login.php');
@@ -128,7 +128,24 @@ foreach ($users as $u) {
         let p7Data = [<?php echo $p7Data[0] . ', ' . $p7Data[1] . ', ' . $p7Data[2] . ', ' . $p7Data[3] ?>];
         let p8Data = [<?php echo $p8Data[0] . ', ' . $p8Data[1] . ', ' . $p8Data[2] . ', ' . $p8Data[3] ?>];
         let p9Data = [<?php echo $p9Data[0] . ', ' . $p9Data[1] . ', ' . $p9Data[2] . ', ' . $p9Data[3] ?>];
-        let komentari = ['neki komentar', 'neki drugi komentar', 'treci neki komentar'];
+        
+        <?php
+        $sql = 'SELECT `komentar` FROM korisnik;';
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $result = $conn->query($sql);
+        $sviKomentari = '';
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $komentar = $row['komentar'];
+                $sviKomentari .= '"' . $komentar . '",';
+            }
+        }
+        ?>
+        
+        let komentari = [<?php echo $sviKomentari; ?>]
+            .filter(k => k && k.length > 0);
     </script>
     <script defer src="../url-script.js"></script>
     <script defer src="../Chart.bundle.min.js"></script>
@@ -140,7 +157,7 @@ foreach ($users as $u) {
             text-decoration: none;
         }
         #komentari {
-            list-style-type: disclosure-closed;
+            list-style-type: square;
             margin-left: 20px;
         }
     </style>
@@ -182,39 +199,39 @@ foreach ($users as $u) {
         <canvas id="p0"></canvas>
     </div>
     <div class="container">
-        <p>Mislite li da je vazduh u nasem gradu zagadjen? (Pitanje 2)</p>
+        <p>Mislite li da je vazduh u našem gradu zagađen? (Pitanje 2)</p>
         <canvas id="p1"></canvas>
     </div>
     <div class="container">
-        <p>Mislite li da vam je zdravlje ugrozeno zbog zagadjenog vazduha? (Pitanje 3)</p>
+        <p>Mislite li da vam je zdravlje ugroženo zbog zagađenog vazduha? (Pitanje 3)</p>
         <canvas id="p2"></canvas>
     </div>
     <div class="container">
-        <p>Koliko smatrate da je vazduh zagadjen? (Pitanje 4)</p>
+        <p>Koliko smatrate da je vazduh zagađen? (Pitanje 4)</p>
         <canvas id="p3"></canvas>
     </div>
     <div class="container">
-        <p>Koliko smatrate da je problem zagadjenog vazduga resiv? (Pitanje 5)</p>
+        <p>Koliko smatrate da je problem zagađenog vazduha rešiv? (Pitanje 5)</p>
         <canvas id="p4"></canvas>
     </div>
     <div class="container">
-        <p>Jeste li imali kasalj u poslednje vreme? (Pitanje 6)</p>
+        <p>Jeste li imali kašalj u poslednje vreme? (Pitanje 6)</p>
         <canvas id="p5"></canvas>
     </div>
     <div class="container">
-        <p>Mislite li da nasi gradjani treba da nose maske protiv zagadjenog vazduha? (Pitanje 7)</p>
+        <p>Mislite li da naši građani treba da nose maske protiv zagađenog vazduha? (Pitanje 7)</p>
         <canvas id="p6"></canvas>
     </div>
     <div class="container">
-        <p>Sta smatrate glavnim razlozima za zagadjenost vazduha? (Pitanje 8)</p>
+        <p>Šta smatrate glavnim razlozima za zagađenost vazduha? (Pitanje 8)</p>
         <canvas id="p7"></canvas>
     </div>
     <div class="container">
-        <p>Sta od navedenog smatrate da bi pomoglo kod problema zagadjenog vazduga? (Pitanje 9)</p>
+        <p>Šta od navedenog smatrate da bi pomoglo kod problema zagađenog vazduha? (Pitanje 9)</p>
         <canvas id="p8"></canvas>
     </div>
     <div class="container">
-        <p>Koji gradovi su po vama najzagadjeniji? (Pitanje 10)</p>
+        <p>Koji gradovi su po vama najzagađeniji? (Pitanje 10)</p>
         <canvas id="p9"></canvas>
     </div>
     <div class="container">

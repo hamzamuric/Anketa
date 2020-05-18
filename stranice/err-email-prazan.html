@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prazna polja</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            flex-direction: row;
+        }
+
+        @keyframes klackalica {
+            0% {
+                background-color: rgb(87, 0, 0);
+            }
+
+            50% {
+                background-color: rgb(206, 0, 0);
+            }
+
+            100% {
+                background-color: rgb(87, 0, 0);
+            }
+        }
+
+        #poruka {
+            background-color: darkred;
+            color: white;
+            display: inline-block;
+            font-size: x-large;
+            align-self: center;
+            margin: 10rem auto auto auto;
+            padding: 20px;
+            animation: klackalica 2s infinite;
+            animation-timing-function: linear;
+        }
+
+        #poruka a {
+            color: yellow;
+            width: 200px;
+            text-align: center;
+            display: block;
+            background-color: black;
+            padding: 3px 10px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 5px 5px 1px 1px yellow;
+            transition: all 150ms ease-in-out;
+        }
+
+        #poruka a:hover {
+            background-color: white;
+            color: red;
+            box-shadow: 5px 5px 1px 1px;
+            transform: scaleX(1.12);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="poruka">
+        <h1>Email i lozinka ne smeju biti prazni</h1>
+        <a href="#" onclick="history.back()">&lt; Nazad</a>
+    </div>
+</body>
+</html>

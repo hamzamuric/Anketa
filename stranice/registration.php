@@ -36,7 +36,7 @@ if (isset($_SESSION['logged'])) {
                 <table>
                     <tr>
                         <td>E-mail:</td>
-                        <td><input type="text" name="email" id="email"></td>
+                        <td><input type="email" name="email" id="email"></td>
                     </tr>
                     <tr>
                         <td>Lozinka</td>
@@ -54,7 +54,7 @@ if (isset($_SESSION['logged'])) {
                 <table>
                     <tr>
                         <td>E-mail:</td>
-                        <td><input type="text" name="email" id="email"></td>
+                        <td><input type="email" name="email" id="email"></td>
                     </tr>
                     <tr>
                         <td>Lozinka</td>

@@ -8,18 +8,17 @@ if (!$_SESSION["dbhost"]) {
     die();
 }
 
-$dbhost = $_SESSION["dbhost"];
-$dbuser = $_SESSION["dbuser"];
-$dbpass = $_SESSION["dbpass"];
-$dbname = $_SESSION["dbname"];
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "";
+$dbname = "anketa";
 
 $answers = array();
 $score = 0;
 
 for ($i = 0; $i < 7; $i++) {
     if (!isset($_POST['p' . $i])) {
-        echo '<h1>Morate odgovoriti na sva pitanja.</h1>';
-        echo '<a href="../stranice/anketa.php">Pokusajte ponovo</a>';
+        header('Location: ../stranice/err-greska.html');
         die();
     }
     $answer = explode(',', $_POST['p' . $i]);
@@ -30,8 +29,7 @@ for ($i = 0; $i < 7; $i++) {
 
 for ($i = 7; $i < 10; $i++) {
     if (!isset($_POST['p' . $i])) {
-        echo '<h1>Morate odgovoriti na sva pitanja.</h1>';
-        echo '<a href="../stranice/anketa.php">Pokusajte ponovo</a>';
+        header('Location: ../stranice/err-sva-pitanja.html');
         die();
     }
     $p = $_POST['p' . $i];
@@ -58,17 +56,15 @@ WHERE `email`='$_SESSION[logged]';";
 
 $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 if ($conn->connect_error) {
-    echo 'connection error';
-    return false;
+    header('Location: ../stranice/err-greska.html');
+    die();
 }
 
 if($conn->query($query)) {
-    echo '<h1>Hvala Vam sto ste popunili anketu.</h1>';
-    echo '<a href="../stranice/registration.php">Pocetna strana</a>';
+    header('Location: ../stranice/hvala.html');
     die();
 } else {
-    echo '<h1>Doslo je do greske.</h1>';
-    echo '<a href="../stranice/anketa.php">Pokusajte ponovo</a>';
+    header('Location: ../stranice/err-greska.html');
     die();
 }
 $conn->close();

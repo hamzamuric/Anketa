@@ -8,11 +8,6 @@ if (!$_SESSION["dbhost"]) {
     die();
 }
 
-$dbhost = $_SESSION["dbhost"];
-$dbuser = $_SESSION["dbuser"];
-$dbpass = $_SESSION["dbpass"];
-$dbname = $_SESSION["dbname"];
-
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     header('Location: ../stranice/registration.php');
     die();
@@ -22,8 +17,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 if (!(isset($email) && isset($password)) || empty($email) || empty($password)) {
-    echo '<h1>E-mail i lozinka ne smeju biti prazni!</h1><br/>';
-    echo '<a href="../stranice/registration.php">Pokusajte ponovo</a>';
+    header('Location: ../stranice/err-email-prazan.html');
     die();
 }
 
@@ -32,16 +26,15 @@ if (check_login($email, $password)) {
     header('Location: ../stranice/anketa.php');
     die();
 } else {
-    echo '<h1>E-mail i lozinka nisu ispravni.</h1><br/>';
-    echo '<a href="../stranice/registration.php">Pokusajte ponovo</a>';
+    header('Location: ../stranice/err-podaci-neispravni.html');
     die();
 }
 
 function check_login($mail, $pass) {
-    global $dbhost;
-    global $dbuser;
-    global $dbpass;
-    global $dbname;
+    $dbhost = "localhost";
+    $dbuser = "root";
+    $dbpass = "";
+    $dbname = "anketa";
     $query = "SELECT `password` FROM `korisnik` WHERE `email`='$mail';";
     $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
     if ($conn->connect_error) {

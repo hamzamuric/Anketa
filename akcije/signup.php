@@ -8,11 +8,6 @@ if (!$_SESSION["dbhost"]) {
     die();
 }
 
-$dbhost = $_SESSION["dbhost"];
-$dbuser = $_SESSION["dbuser"];
-$dbpass = $_SESSION["dbpass"];
-$dbname = $_SESSION["dbname"];
-
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     header('Location: ../stranice/registration.php');
     die();
@@ -22,15 +17,13 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $password_again = $_POST['password-again'];
 
-if (!(isset($email) && isset($password) && isset($password_again)) || empty($email) || empty($password) || empty($password_again)) {
-    echo '<h1>Polja ne smeju biti prazna!</h1><br/>';
-    echo '<a href="../stranice/registration.php">Pokusajte ponovo</a>';
+if (!(isset($email) && isset($password) && isset($password_again)) || empty($email) || empty($password) || empty($password_again)) {;
+    header('Location: ../stranice/err-email-prazan.html');
     die();
 }
 
 if ($password != $password_again) {
-    echo '<h1>Lozinke se ne poklapaju!</h1><br/>';
-    echo '<a href="../stranice/registration.php">Pokusajte ponovo</a>';
+    header('Location: ../stranice/err-razlicite-lozinke.html');
     die();
 }
 
@@ -40,17 +33,20 @@ if ($ok) {
     header('Location: ../stranice/anketa.php');
     die();
 } else {
-    echo '<h1>Vec postoji korisnik sa emailom: ' . $email . '</h1><br/>';
-    echo '<a href="../stranice/registration.php">Pokusajte ponovo</a>';
+    header('Location: ../stranice/err-vec-postoji.html');
     die();
 }
 
 function make_user($mail, $pass) {
+    $dbhost = "localhost";
+    $dbuser = "root";
+    $dbpass = "";
+    $dbname = "anketa";
     $password_hash = password_hash($pass, PASSWORD_DEFAULT);
     $query = "INSERT INTO `korisnik` (`email`, `password`) VALUES ('$mail', '$password_hash');";
     $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
     if ($conn->connect_error) {
-        echo 'connection error';
+        echo 'connection error<br>';
         return false;
     }
 

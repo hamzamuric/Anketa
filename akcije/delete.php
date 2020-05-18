@@ -8,10 +8,10 @@ if (!$_SESSION["dbhost"]) {
     die();
 }
 
-$dbhost = $_SESSION["dbhost"];
-$dbuser = $_SESSION["dbuser"];
-$dbpass = $_SESSION["dbpass"];
-$dbname = $_SESSION["dbname"];
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "";
+$dbname = "anketa";
 
 $email = $_GET["email"];
 
